@@ -34,6 +34,7 @@ function Popup(props) {
         event.preventDefault();
 
         updateTodo(todoId, todoStatus, todoTitle, todoDesc, todoCategory, todoStart, todoEnd).then(docRef => {
+            setTodo({});
             setTodoId('');
             setTodoStatus('');
             setTodoTitle('');
