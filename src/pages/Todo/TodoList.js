@@ -50,7 +50,7 @@ function TodoList(props) {
                             <div className="todo-list-card-genre">{todo.category}</div>
                             <div className="todo-list-card-bottom">
                                 <div className="todo-list-card-bottom-time">
-                                    <div className="todo-list-card-start">開始日: {formatDate(todo.start)}</div>
+                                    <span className="todo-list-card-start">{formatDate(todo.start)}</span> ~ <span className="todo-list-card-end">{formatDate(todo.end)}</span>
                                 </div>
                                 <div className="todo-list-card-bottom-delete">
                                     <button href="#" onClick={event => handleDelete(event, todo.id)}><i className="fas fa-trash-alt"></i></button>
