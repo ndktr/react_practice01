@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import Header from './components/Header';
-import Home from './pages/Home/Home';
-import Todo from './pages/Todo/Todo';
+import Header from './components/Header'
+import Home from './pages/Home/Home'
+import Todo from './pages/Todo/Todo'
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [authLoading, setAuthLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [authLoading, setAuthLoading] = useState(true)
 
     //ログイン状態監視
     useEffect(() => {
-        const auth = getAuth();
+        const auth = getAuth()
 
         onAuthStateChanged(auth, (user) => {
-            console.log('onAuthStateChanged:', !!user);
-            setIsLoggedIn(!!user);
-            setAuthLoading(false);
+            console.log('onAuthStateChanged:', !!user)
+            setIsLoggedIn(!!user)
+            setAuthLoading(false)
         })
-    }, []);
+    }, [])
 
     return (
         <div className="app">
@@ -42,7 +42,7 @@ function App() {
                 <p className="app-footer-text">&copy; 2023 ToDoMe. All rights reserved.</p>
             </div>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App

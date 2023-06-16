@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { logOut } from '../utils/auth';
+import { logOut } from '../utils/auth'
 
 function Header(props) {
-    const { isLoggedIn } = props;
+    const { isLoggedIn } = props
 
     const onLogout = (event) => {
-        event.preventDefault();
-        logOut(event);
-    };
+        event.preventDefault()
+        logOut(event)
+    }
 
     return (
         <div className="app-header">
@@ -18,4 +18,4 @@ function Header(props) {
     )
 }
 
-export default Header;
+export default Header
