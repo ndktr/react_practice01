@@ -1,31 +1,31 @@
-import React from 'react';
+import React from 'react'
 
-import { formatDate } from '../../utils/common';
-import { fetchTodos, fetchTodo, deleteTodo } from '../../utils/firebase';
+import { formatDate } from '../../utils/common'
+import { fetchTodos, fetchTodo, deleteTodo } from '../../utils/firebase'
 
 function TodoList(props) {
-    const {statusText, todos, setTodo, setTodos, registerPopupOpen, setRegisterPopupOpen, setEditPopupOpen, setFetchLoading} = props;
+    const {statusText, todos, setTodo, setTodos, registerPopupOpen, setRegisterPopupOpen, setEditPopupOpen, setFetchLoading} = props
 
     const handleClick = (event, id, setTodo) => {
-        event.preventDefault();
+        event.preventDefault()
 
-        setEditPopupOpen(true);
+        setEditPopupOpen(true)
         fetchTodo(id).then(data => {
-            data.id = id;
-            setTodo(data);
-            setFetchLoading(true);
-        });
+            data.id = id
+            setTodo(data)
+            setFetchLoading(true)
+        })
     }
 
     const handleDelete = (event, id) => {
-        event.preventDefault();
+        event.preventDefault()
 
-        const confirmed = window.confirm("Are you sure you want to delete this?");
+        const confirmed = window.confirm("Are you sure you want to delete this?")
         if (confirmed) {
             deleteTodo(id).then(docRef => {
                 fetchTodos().then((data) => {
-                    setTodos(data);
-                });
+                    setTodos(data)
+                })
             })
         }
     }
@@ -61,7 +61,7 @@ function TodoList(props) {
                 </ul>
             </div>
         </div>
-    );
+    )
 }
 
-export default TodoList;
+export default TodoList

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 
-import { logIn } from '../../utils/auth';
+import { logIn } from '../../utils/auth'
 
 function Home(props) {
-    const { isLoggedIn } = props;
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { isLoggedIn } = props
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const onLogin = event => {
-        event.preventDefault();
-        logIn(event, email, password);
-    };
+        event.preventDefault()
+        logIn(event, email, password)
+    }
 
     if (isLoggedIn) {
         return <Navigate to="/todo" />
@@ -43,4 +43,4 @@ function Home(props) {
     }
 }
 
-export default Home;
+export default Home

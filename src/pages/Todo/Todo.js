@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 
-import Popup from '../../components/Popup';
-import TodoList from './TodoList';
-import { fetchTodos } from '../../utils/firebase';
+import Popup from '../../components/Popup'
+import TodoList from './TodoList'
+import { fetchTodos } from '../../utils/firebase'
 
 function Todo(props) {
-    const { isLoggedIn } = props;
-    const [fetchLoading, setFetchLoading] = useState(false);
-    const [todos, setTodos] = useState([]);
-    const [todo, setTodo] = useState({});
-    const [registerPopupOpen, setRegisterPopupOpen] = useState(false);
-    const [editPopupOpen, setEditPopupOpen] = useState(false);
+    const { isLoggedIn } = props
+    const [fetchLoading, setFetchLoading] = useState(false)
+    const [todos, setTodos] = useState([])
+    const [todo, setTodo] = useState({})
+    const [registerPopupOpen, setRegisterPopupOpen] = useState(false)
+    const [editPopupOpen, setEditPopupOpen] = useState(false)
 
     useEffect(() => {
         if (isLoggedIn) {
             fetchTodos().then((data) => {
                 setTodos(data)
-            });
+            })
         }
-    }, [fetchLoading]);
+    }, [fetchLoading])
 
     if (isLoggedIn) {
         return (
@@ -30,10 +30,10 @@ function Todo(props) {
                 <TodoList statusText="保留" todos={todos.filter(todo => todo.status == 'stop')} registerPopupOpen={registerPopupOpen} setRegisterPopupOpen={setRegisterPopupOpen} editPopupOpen={editPopupOpen} setEditPopupOpen={setEditPopupOpen} setTodo={setTodo} setTodos={setTodos} setFetchLoading={setFetchLoading}/>
                 <TodoList statusText="完了" todos={todos.filter(todo => todo.status == 'complete')} registerPopupOpen={registerPopupOpen} setRegisterPopupOpen={setRegisterPopupOpen} editPopupOpen={editPopupOpen} setEditPopupOpen={setEditPopupOpen} setTodo={setTodo} setTodos={setTodos} setFetchLoading={setFetchLoading}/>
             </div>
-        );
+        )
     } else {
         return <Navigate to="/" />
     }
 }
 
-export default Todo;
+export default Todo
